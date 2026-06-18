@@ -1,0 +1,8 @@
+- name: Install Nginex in my qa Server
+  hosts: all
+  become: yes
+  tasks:
+   - name: this is for nginx installation module
+     yum:
+       name: nginx
+       state: present
