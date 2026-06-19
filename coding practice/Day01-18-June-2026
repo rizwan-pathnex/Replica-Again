@@ -6,3 +6,17 @@
      yum:
        name: nginx
        state: present
+
+# terraform code Ec2
+
+provider "aws" {
+ region = "ap-south-1"
+  }
+resource "aws_instance" "mip_ec2"{
+ami = "xxxxxxxxxxxxxxxxxxxxx"
+instance_type = "c5.xlarge"
+tags = {
+  Name = "mip-ec2-qa"
+}
+
+}
