@@ -1,0 +1,51 @@
+- name: install and enable nginx
+  hosts: all
+  become: yes
+  tasks:
+   - name: install nginx
+     dnf:
+      name: nginx
+      state: present
+   - name: enable nginx
+     service:
+       name: nginx
+       state: started
+       enables: yes
+
+----------------------------------
+
+terrafrom {
+ required_provider {
+    aws = {
+      source = "hasicorp/aws"
+      version = "~>6.0"
+
+}
+
+
+}
+
+
+}
+
+provider "aws" {
+
+region = "ap-south-1"
+}
+
+
+resource "aws_istance" "mip_ec2" {
+
+ami = "xxxxxxxxxxxxxxxxxx"
+instance_type = "c5.xlarge"
+
+tags = {
+
+Name = "server-mip1"
+Environment = "Tranning"
+
+Owner = "Rizwan"
+}
+
+
+}
